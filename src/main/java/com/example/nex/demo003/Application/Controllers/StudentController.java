@@ -1,6 +1,7 @@
 package com.example.nex.demo003.Application.Controllers;
 
 
+import com.example.nex.demo003.Application.dto.request.CreateStudentDto;
 import com.example.nex.demo003.Application.dto.response.StudentGeneralDto;
 import com.example.nex.demo003.Domain.entity.Student;
 import com.example.nex.demo003.Domain.service.StudentService;
@@ -23,8 +24,8 @@ public class StudentController {
     }
 
     @PostMapping("/addStudent")
-    public ResponseEntity<Student> addStudent(){
-
+    public ResponseEntity<Student> addStudent(@RequestBody CreateStudentDto newStudent){
+        return studentService.addStudent(newStudent);
     }
 
 

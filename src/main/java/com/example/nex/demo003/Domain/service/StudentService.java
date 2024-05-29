@@ -1,5 +1,6 @@
 package com.example.nex.demo003.Domain.service;
 
+import com.example.nex.demo003.Application.dto.request.CreateStudentDto;
 import com.example.nex.demo003.Application.dto.response.StudentGeneralDto;
 import com.example.nex.demo003.Domain.entity.Student;
 import com.example.nex.demo003.External.repository.StudentRepo;
@@ -34,5 +35,17 @@ public class StudentService {
             logger.warn("Student with ID {} not found", id);
             return ResponseEntity.notFound().build();
         }
+    }
+
+
+    public ResponseEntity<Student> addStudent(CreateStudentDto newStudent) {
+        Student student = new Student();
+        student.setId(newStudent.getId());
+        student.setName(newStudent.getName());
+        student.setEmail(newStudent.getEmail());
+        student.setAddress(newStudent.getAddress());
+        studentRepo.save(student);
+        ResponseEntity<Student> responseEntity = ResponseEntity.ok(student);
+        return responseEntity;
     }
 }
