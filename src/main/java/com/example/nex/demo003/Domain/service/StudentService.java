@@ -62,4 +62,19 @@ public class StudentService {
             return ResponseEntity.notFound().build();
         }
     }
+
+    public ResponseEntity<String> updateStudent(String id, String newName) {
+
+        Optional<Student> optionalStudent = studentRepo.findById(id);
+
+        if(optionalStudent.isPresent()){
+            Student student= optionalStudent.get();
+
+            student.setName(optionalStudent.get().getName());
+            return ResponseEntity.ok("Updated");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+
+    }
 }
