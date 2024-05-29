@@ -48,4 +48,18 @@ public class StudentService {
         ResponseEntity<Student> responseEntity = ResponseEntity.ok(student);
         return responseEntity;
     }
+
+    public ResponseEntity<String> deleteStudent(String id) {
+
+        Optional<Student> optionalStudent = studentRepo.findById(id);
+
+        if(optionalStudent.isPresent()){
+            studentRepo.deleteById(id);
+            return ResponseEntity.ok("Successfully Deleted!");
+        }
+        else {
+            logger.warn("Student with ID {} not found for Delete!", id);
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
