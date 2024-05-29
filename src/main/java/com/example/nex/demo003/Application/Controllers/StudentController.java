@@ -33,6 +33,11 @@ public class StudentController {
         return studentService.deleteStudent(id);
     }
 
+    @PutMapping("/updateStudent")
+    public ResponseEntity<String> updateStudent(@RequestParam String id, @RequestParam String newName){
+        return studentService.updateStudent(id,newName);
+    }
+
 
 
 
