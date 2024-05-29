@@ -28,6 +28,11 @@ public class StudentController {
         return studentService.addStudent(newStudent);
     }
 
+    @DeleteMapping("/deleteStudent")
+    public ResponseEntity<String> deleteStudent(String id){
+        return studentService.deleteStudent(id);
+    }
+
 
 
 
